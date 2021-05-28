@@ -45,6 +45,9 @@ int main(int argc, char** argv) {
 	carpeta3->agregarArchivo(new JPG("Imagen3","Luis",carpeta3,true,"HD",4,4));
 	carpeta3->agregarArchivo(new PPT("Presentacion3","Luis",carpeta3,"PW3",4,4,true));
 	//
+	carpeta1->agregarDirectorio(windows->getDirectorio());
+	carpeta2->agregarDirectorio(carpeta1);
+	carpeta3->agregarDirectorio(carpeta2);
 
 	while(main!=5){
 		switch(main=menu()){
@@ -58,7 +61,7 @@ int main(int argc, char** argv) {
 				string carpeta,autor;
 				cout<<"Ingrese nombre Directorio(carpeta): ";
 				cin>>carpeta;
-				cout<<"Nombre Autor";
+				cout<<"Nombre Autor: ";
 				cin>>autor;
 				Directorio* c=new Directorio(carpeta,autor,windows->getDirectorio());
 				cout<<"Creado Exitosamente"<<endl;
@@ -66,11 +69,90 @@ int main(int argc, char** argv) {
 				break;
 			}
 			case 3:{
-
-				
+				int opc=0;
+				while(opc!=4){
+					cout<<"1. Crear CPP "<<endl<<"2. Crear JPG "<<endl<<"3. Crear PPT "<<endl<<"4. Regresar al Main "<<endl;
+					cin>>opc;
+					if(opc==1){
+						//carpeta2->agregarArchivo(new CPP("Dev2","Luis",carpeta2,0,0));
+						string name,autor;
+						int lineas,errores;
+						cout<<"Ingrese nombre archivo: ";
+						cin>>name;
+						cout<<"Ingrese autor: ";
+						cin>>autor;
+						cout<<"Ingrese lineas: ";
+						cin>>lineas;
+						cout<<"Ingrese errores: ";
+						cin>>errores;
+						windows->getDirectorio()->agregarArchivo(new CPP(name,autor,windows->getDirectorio(),lineas,errores));
+						cout<<"Creado Exitosamente: "<<endl;
+					}
+					if(opc==2){
+						//	carpeta3->agregarArchivo(new JPG("Imagen3","Luis",carpeta3,true,"HD",4,4));
+						string name,autor;
+						bool flash;
+						double aa,l;
+						string res;
+						cout<<"Ingrese nombre archivo: ";
+						cin>>name;
+						cout<<"Ingrese autor: ";
+						cin>>autor;
+						int n;
+						cout<<"Desea Flash: (si=0,no=1)";
+						cin>>n;
+						if(n==0){
+							flash=true;
+						}else{
+							flash=false;
+						}
+						cout<<"resolucion: ";
+						cin>>res;
+						cout<<"ancho: ";
+						cin>>aa;
+						cout<<"largo: ";
+						cin>>l;
+						windows->getDirectorio()->agregarArchivo(new JPG(name,autor,windows->getDirectorio(),flash,res,l,aa));
+					}
+					if(opc==3){
+					
+						string name,autor;
+						string titulo;
+						int numSlides;
+						int numPlantilla;
+						bool tiene;
+						cout<<"Ingrese nombre archivo: ";
+						cin>>name;
+						cout<<"Ingrese autor: ";
+						cin>>autor;
+						cout<<"Titulo: ";
+						cin>>titulo;
+						cout<<"Slides: ";
+						cin>>numSlides;
+						cout<<"Plantillas: ";
+						cin>>numPlantilla;
+						int n;
+						cout<<"Desea Animacion: (si=0,no=1)";
+						cin>>n;
+						if(n==0){
+							tiene=true;
+						}else{
+							tiene=false;
+						}
+							//carpeta3->agregarArchivo(new PPT("Presentacion3","Luis",carpeta3,"PW3",4,4,true));
+						windows->getDirectorio()->agregarArchivo(new PPT(name,autor,windows->getDirectorio(),titulo,numSlides,numPlantilla,tiene));
+						cout<<"Creado "<<endl;						
+					}
+				}
 				break;
 			}
+			
+			
 			case 4:{
+				string word;
+				cout<<"Palabra para buscar: ";
+				cin>>word;
+				windows->getDirectorio()->buscarPorNombre(word);
 		
 				
 				break;

@@ -6,7 +6,7 @@
 class CPP : public Archivo
 {
 	private:
-		int lineadCodigo;
+		int lineasCodigo;
 		int numErrores;
 	public:
 		CPP(string,string,FileSystemNode*,int,int);

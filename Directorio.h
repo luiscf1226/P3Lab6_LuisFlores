@@ -2,6 +2,11 @@
 #define DIRECTORIO_H
 #include <vector>
 #include "FileSystemNode.h"
+#include"Archivo.h"
+#include"CPP.h"
+#include"JPG.h"
+#include"PPT.h"
+#include"Directorio.h"
 
 class Directorio : public FileSystemNode
 {
