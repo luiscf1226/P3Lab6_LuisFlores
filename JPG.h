@@ -11,9 +11,14 @@ class JPG : public Archivo
 		double largo;
 		double ancho;
 		
+		
 	public:
 		JPG(string,string,FileSystemNode*,bool,string,double,double);
 		virtual string toString();
+		double getLargo();
+		double getAncho();
+		string getResolucion();
+		
 	protected:
 };
 

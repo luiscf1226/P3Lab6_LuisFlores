@@ -31,28 +31,38 @@ int main(int argc, char** argv) {
 	//1.
 	//
 	Directorio* carpeta1=new Directorio("carpeta1","Luis",windows->getDirectorio());
+	Directorio* carpeta2=new Directorio("carpeta2","Luis",carpeta1);
+	Directorio* carpeta3=new Directorio("carpeta3","Luis",carpeta2);
+	//
+	windows->getDirectorio()->agregarDirectorio(carpeta1);
+	//
+
+	//
+	
+	
+	//
 	carpeta1->agregarArchivo(new CPP("Dev1","Luis",carpeta1,0,0));
 	carpeta1->agregarArchivo(new JPG("Imagen1","Luis",carpeta1,true,"HD",4,4));
 	carpeta1->agregarArchivo(new PPT("Presentacion1","Luis",carpeta1,"PW2",4,4,true));
 	//
-	Directorio* carpeta2=new Directorio("carpeta2","Luis",carpeta1);
+	
 	carpeta2->agregarArchivo(new CPP("Dev2","Luis",carpeta2,0,0));
 	carpeta2->agregarArchivo(new JPG("Imagen2","Luis",carpeta2,true,"HD",4,4));
 	carpeta2->agregarArchivo(new PPT("Presentacion2","Luis",carpeta2,"PW2",4,4,true));
 	//
-	Directorio* carpeta3=new Directorio("carpeta3","Luis",carpeta2);
+	
 	carpeta3->agregarArchivo(new CPP("Dev3","Luis",carpeta3,0,0));
 	carpeta3->agregarArchivo(new JPG("Imagen3","Luis",carpeta3,true,"HD",4,4));
 	carpeta3->agregarArchivo(new PPT("Presentacion3","Luis",carpeta3,"PW3",4,4,true));
 	//
-	carpeta1->agregarDirectorio(windows->getDirectorio());
-	carpeta2->agregarDirectorio(carpeta1);
-	carpeta3->agregarDirectorio(carpeta2);
+	carpeta1->agregarDirectorio(carpeta2);
+	carpeta2->agregarDirectorio(carpeta3);
+	//carpeta3->agregarDirectorio(carpeta2);
 
 	while(main!=5){
 		switch(main=menu()){
 			case 1:{
-					
+				windows->getDirectorio()->imprimirRecursivo(1);
 				break;
 			}
 			case 2:{
@@ -63,7 +73,8 @@ int main(int argc, char** argv) {
 				cin>>carpeta;
 				cout<<"Nombre Autor: ";
 				cin>>autor;
-				Directorio* c=new Directorio(carpeta,autor,windows->getDirectorio());
+				//Directorio* c=new Directorio(carpeta,autor,windows->getDirectorio());
+				windows->getDirectorio()->agregarDirectorio(new Directorio(carpeta,autor,windows->getDirectorio()));
 				cout<<"Creado Exitosamente"<<endl;
 		
 				break;
@@ -163,5 +174,9 @@ int main(int argc, char** argv) {
 			}
 		}//sitwch
 	}//while
+	delete windows;
+	delete carpeta1;
+	delete carpeta2;
+	delete carpeta3;
 	return 0;
 }

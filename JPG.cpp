@@ -8,7 +8,7 @@ string JPG::toString(){
 	}else{
 		fla="NO HAY";
 	}
-	return "Flash "+fla+" Resolucion: "+this->resolucion+" Ancho: "+anch+"Largo: "+lar;
+	return "Nombre: "+this->nombre+"Autor: "+this->autor+"Flash "+fla+" Resolucion: "+this->resolucion+" Ancho: "+anch+"Largo: "+lar;
 }
 JPG::JPG(string n,string a, FileSystemNode* m,bool flash,string res,double l,double aa):Archivo(n,a,m){
 	this->conFlash=flash;
@@ -16,4 +16,13 @@ JPG::JPG(string n,string a, FileSystemNode* m,bool flash,string res,double l,dou
 	this->largo=l;
 	this->ancho=aa;
 	
+}
+double JPG::getAncho(){
+	return this->ancho;
+}
+double JPG::getLargo(){
+	return this->largo;
+}
+string JPG::getResolucion(){
+	return this->resolucion;
 }

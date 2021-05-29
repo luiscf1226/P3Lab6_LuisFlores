@@ -8,6 +8,8 @@ class FileSystemNode
 	public:
 		FileSystemNode(string,string,FileSystemNode*);
 		virtual string toString()=0;
+		string getAutor();
+		string getNombre();
 	protected:
 		string nombre;
 		string autor;
